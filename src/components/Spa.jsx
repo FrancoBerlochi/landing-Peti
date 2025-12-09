@@ -86,7 +86,7 @@ const Spa = () => {
           <div className="flex gap-8 items-center">
             <a
               href=""
-              className="flex gap-4 border-1 border-pink-400 rounded-md p-2 text-pink-400"
+              className="flex gap-4 border-1 border-pink-400 rounded-md p-2 text-pink-400 hover:bg-[#6661]"
             >
               <Mail></Mail> Contacto
             </a>
