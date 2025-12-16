@@ -1,6 +1,8 @@
-import { Brush, Mail } from "lucide-react";
+import { Brush, Mail, Instagram } from "lucide-react";
 import CardImg from "./CardImg";
 import img1 from "../assets/pexels-pixabay-147411.jpg";
+import insta from "../assets/instagram.png";
+import x from "../assets/x.png";
 import { useState } from "react";
 import BtnCommerce from "./BtnCommerce";
 import ShopCard from "./ShopCard";
@@ -26,8 +28,30 @@ const Spa = () => {
     { id: 8, img: img1, title: "titulo", style: "estilo", size: "30x40cm" },
   ];
 
-  const shopCards = [{ id: 1, img: img1, title: "producto numero 1", style: "estilo de dibujado mixto", price: "$120" }, { id: 2, img: img1, title: "producto numero 1", style: "estilo de dibujado mixto", price: "$120" }, { id: 3, img: img1, title: "producto numero 1", style: "estilo de dibujado mixto", price: "$120" }]
-  
+  const shopCards = [
+    {
+      id: 1,
+      img: img1,
+      title: "producto numero 1",
+      style: "estilo de dibujado mixto",
+      price: "$120",
+    },
+    {
+      id: 2,
+      img: img1,
+      title: "producto numero 1",
+      style: "estilo de dibujado mixto",
+      price: "$120",
+    },
+    {
+      id: 3,
+      img: img1,
+      title: "producto numero 1",
+      style: "estilo de dibujado mixto",
+      price: "$120",
+    },
+  ];
+
   const opinions = [
     {
       id: 1,
@@ -45,10 +69,57 @@ const Spa = () => {
       name: "Laura Martínez",
     },
   ];
+
+  const [form, setForm] = useState({
+    nombre: "",
+    email: "",
+    asunto: "",
+    mensaje: "",
+  });
+
+  const [errors, setErrors] = useState({
+    nombre: false,
+    email: false,
+    asunto: false,
+    mensaje: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    setErrors({
+      ...errors,
+      nombre: false,
+      email: false,
+      asunto: false,
+      mensaje: false,
+    });
+  };
+
+  const validateEmail = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (form.nombre == "") {
+      setErrors({ ...errors, nombre: true });
+      return;
+    } else if (!validateEmail(form.email)) {
+      setErrors({ ...errors, email: true });
+      return;
+    } else if (form.asunto == "") {
+      setErrors({ ...errors, asunto: true });
+    } else if (form.mensaje == "") {
+      setErrors({ ...errors, mensaje: true });
+    }
+  };
   // const [isOpen, setIsOpen] = useState(false);
   const handleCount = () => {
-    setCount(cards.length)
-  }
+    setCount(cards.length);
+  };
 
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
@@ -211,19 +282,141 @@ const Spa = () => {
           </div>
         </section>
         {/* <button onClick={()=> setIsOpen(!isOpen)}className="mt-8">achus</button> */}
-        <section className="mt-16 flex">
+        <section className="mt-16 flex justify-between mx-60">
           <div>
-            <h2>¿Interesado en mi Arte?</h2>
-            <p>
+            <h2 className="text-[#821943] font-semibold text-3xl">
+              ¿Interesado en mi Arte?
+            </h2>
+            <p className="w-170 mt-8 text-[#ba3167]">
               Si tienes alguna pregunta sobre mis obras, estás interesado en una
               comisión personalizada o simplemente quieres saber más sobre mi
               proceso creativo, no dudes en contactarme.
             </p>
+            <ul className="flex flex-col mt-8 gap-6">
+              <li className="flex gap-4 text-[#ba3167]">
+                <div>
+                  <Mail color="#ba3167" />
+                </div>{" "}
+                artista@ejemplo.com
+              </li>
+              <li className="flex gap-4 text-[#ba3167]">
+                <div>
+                  <img src={insta} alt="" className="w-6 " />
+                </div>{" "}
+                @nombre_artista
+              </li>
+              <li className="flex gap-4 text-[#ba3167]">
+                <div>
+                  <img src={x} alt="" className="w-6" />
+                </div>{" "}
+                @nombre_artista
+              </li>
+            </ul>
           </div>
-          <div></div>
+          <div className="border-1 border-pink-100 rounded-sm p-6">
+            <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-8">
+              <div>
+                <label className="text-[#821943]">Nombre</label>
+                <input
+                  type="text"
+                  required
+                  name="nombre"
+                  placeholder="Emiliano Perez"
+                  value={form.nombre}
+                  onChange={handleChange}
+                  className={
+                    errors.nombre
+                      ? "w-full border border-gray-300 rounded-lg bg-red-300 p-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+                      : "w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-[hsl(327,65%,49%)]"
+                  }
+                />
+              </div>
+              <div>
+                <label className="text-[#821943]">Email</label>
+                <input
+                  type="email"
+                  required
+                  name="email"
+                  placeholder="emiliano@gmail.com"
+                  value={form.email}
+                  onChange={handleChange}
+                  className={
+                    errors.email
+                      ? "w-full border border-gray-300 rounded-lg bg-red-300 p-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+                      : "w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-[hsl(327,65%,49%)]"
+                  }
+                />
+              </div>
+
+              <div className="col-span-2">
+                <label className="text-[#821943]">Asunto</label>
+                <input
+                  type="text"
+                  required
+                  name="asunto"
+                  placeholder="comisiones"
+                  value={form.asunto}
+                  onChange={handleChange}
+                  className={
+                    errors.asunto
+                      ? "w-full border border-gray-300 rounded-lg bg-red-300 p-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+                      : "w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-[hsl(327,65%,49%)]"
+                  }
+                />
+              </div>
+              <div className="col-span-2">
+                <label className="text-[#821943]">Mensaje</label>
+                <textarea
+                  type="text"
+                  required
+                  name="mensaje"
+                  placeholder="tenía una duda sobre..."
+                  rows="3"
+                  value={form.mensaje}
+                  onChange={handleChange}
+                  className={
+                    errors.mensaje
+                      ? "w-full border border-gray-300 rounded-lg bg-red-300 p-2 focus:outline-none focus:ring-2 focus:ring-red-400"
+                      : "w-full border border-pink-200 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-pink-400 dark:focus:ring-[hsl(327,65%,49%)]"
+                  }
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="col-span-2 bg-[#e62d77] text-white p-1 rounded-sm"
+              >
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
         </section>
       </main>
-      <footer></footer>
+      <footer className="flex justify-between mt-12 pt-2 px-20 bg-[#fae4f9]">
+        <div className="flex gap-6">
+          <div className="text-[#e1488c] flex gap-3 text-2xl align-center justify-center">
+            <Brush className="h-10 w-10 "></Brush>
+            <h2 className="">
+              {" "}
+              <a href="#inicio">Allyn</a>
+            </h2>
+          </div>
+          <ul className="flex gap-4 items-center">
+            <li>
+              <Mail color="#ba3167" />
+            </li>
+            <li>
+              <img src={insta} alt="" className="w-6 " />
+            </li>
+            <li>
+              <img src={x} alt="" className="w-6" />
+            </li>
+          </ul>
+        </div>
+          
+
+        <p className="self-center text-[#ba3167]">© 2025 ArtistName. Todos los derechos reservados.</p>
+      </footer>
     </>
   );
 };
