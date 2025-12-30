@@ -380,9 +380,9 @@ const Spa = () => {
           </div>
         </section>
       </main>
-      <footer className="flex justify-between mt-12 pt-2 px-20 bg-[#fae4f9]">
-        <div className="flex gap-6">
-          <div className="text-[#e1488c] flex gap-3 text-2xl align-center justify-center">
+      <footer className="flex justify-between mt-12 pt-2 px-20 bg-[#fae4f9] max-md:flex-col max-md:items-start max-md:px-6">
+        <div className="flex gap-6 max-md:flex-col max-md:gap-2">
+          <div className="text-[#e1488c] flex gap-3 text-2xl justify-center max-md:items">
             <Brush className="h-10 w-10 "></Brush>
             <h2 className="">
               {" "}
@@ -401,7 +401,7 @@ const Spa = () => {
             </li>
           </ul>
         </div>
-        <p className="self-center text-[#ba3167]">
+        <p className="self-center text-[#ba3167] max-md:mt-6 max-md:mb-2">
           © 2025 ArtistName. Todos los derechos reservados.
         </p>
       </footer>
