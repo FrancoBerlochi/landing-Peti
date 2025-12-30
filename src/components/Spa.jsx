@@ -1,22 +1,19 @@
-import { Brush, Mail, Instagram } from "lucide-react";
+import { Brush, Mail, Instagram, Import } from "lucide-react";
 import CardImg from "./CardImg";
 import img1 from "../assets/pexels-pixabay-147411.jpg";
 import insta from "../assets/instagram.png";
 import x from "../assets/x.png";
 import { useState } from "react";
-import BtnCommerce from "./BtnCommerce";
+
 import ShopCard from "./ShopCard";
 import OpinionCard from "./OpinionCard";
-//import { useState } from "react";
+
+import Header from "./Header";
+
 
 const Spa = () => {
   const [count, setCount] = useState(6);
-  const navNames = [
-    { name: "Galería", href: "#Galería" },
-    { name: "Sobre mí", href: "#Sobre-mí" },
-    { name: "Comisiones", href: "#Comisiones" },
-    { name: "Contacto", href: "#Contacto" },
-  ];
+  
   const cards = [
     { id: 1, img: img1, title: "titulo", style: "estilo", size: "30x40cm" },
     { id: 2, img: img1, title: "titulo", style: "estilo", size: "30x40cm" },
@@ -84,6 +81,8 @@ const Spa = () => {
     mensaje: false,
   });
 
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -121,65 +120,38 @@ const Spa = () => {
     setCount(cards.length);
   };
 
+
+
   window.addEventListener("scroll", () => {
     const header = document.getElementById("header");
     if (window.scrollY > 10) {
-      header.classList.add("opacity-90");
+      header.classList.add("opacity-50");
     } else {
       header.classList.add("bg-white");
-      header.classList.remove("opacity-90");
+      header.classList.remove("opacity-50");
     }
   });
 
+ 
+
   return (
-    <>
-      <header
-        className="bg-white sticky top-0 w-full z-50 transition-colors duration-300 p-5 overflow-x-hidden"
-        id="header"
-      >
-        <nav className="flex justify-between items-center ">
-          <div className="text-[#e1488c] flex gap-3 text-2xl align-center justify-center">
-            <Brush className="h-10 w-10 "></Brush>
-            <h2 className="">
-              {" "}
-              <a href="#inicio">Allyn</a>
-            </h2>
-          </div>
-          <div className="flex gap-6 text-pink-800">
-            {navNames.map((n) => {
-              return (
-                <a href={n.href} className="hover:text-red-400">
-                  {n.name}
-                </a>
-              );
-            })}
-          </div>
-          <div className="flex gap-8 items-center">
-            <a
-              href=""
-              className="flex gap-4 border-1 border-pink-400 rounded-md p-2 text-pink-400 hover:bg-[#6661]"
-            >
-              <Mail></Mail> Contacto
-            </a>
-            <BtnCommerce></BtnCommerce>
-          </div>
-        </nav>
-      </header>
+    <div className="relative">
+      <Header></Header>
       <main className="w-full" id="inicio">
-        <section className="bg-pink-100 flex justify-around items-center p-20 h-[75vh]">
-          <div className="flex flex-col gap-5">
-            <h1 className="text-7xl w-156">
+        <section className="bg-pink-100 flex justify-around items-center p-20 lg:h-[75vh] max-md:flex-col max-md:justify-center max-md:p-0">
+          <div className="flex flex-col gap-12 max-md:justify-center max-md:items-center max-md:mt-6 max-md:h-[75vh]">
+            <h1 className="text-7xl w-156 max-md:text-6xl max-md:w-fit max-md:text-center">
               <span className="text-[#821943] font-bold">Arte que</span>
               <span className="text-[#df3e86] font-bold"> inspira</span>
               <span className="text-[#821943] font-bold"> y</span>
               <span className="text-[#df3e86] font-bold"> transforma</span>
             </h1>
-            <h2 className="w-150 text-[#94214f] text-2xl">
+            <h2 className="w-150 text-[#94214f] text-2xl max-md:text-xl max-md:w-fit max-md:text-center">
               Descubre dibujos únicos creados con pasión y técnica. Cada obra
               cuenta una historia y puede ser tuya.
             </h2>
-            <div className="flex gap-6 mt-6">
-              <button className="bg-[#ed4898] w-28 h-12 text-center text-white rounded-md hover:brightness-90">
+            <div className="flex gap-6 mt-6 max-md:">
+              <button className="bg-[#e62d77] w-28 h-12 text-center text-white rounded-md hover:brightness-90">
                 <a href="#Galería">Ver Galería</a>
               </button>
               <button className="bg-white border-[#ed4898] w-28 h-12 border-2 text-pink-500 rounded-md hover:brightness-90">
@@ -188,9 +160,13 @@ const Spa = () => {
             </div>
           </div>
           <div className="relative">
-            <img src={img1} alt="" className="w-12/12 h-100" />
-            <div class="absolute -bottom-4 -left-4 h-24 w-24 rounded-full bg-pink-400"></div>
-            <div class="absolute -top-4 -right-4 h-12 w-12 rounded-full bg-pink-400 opacity-95"></div>
+            <img
+              src={img1}
+              alt=""
+              className="w-12/12 h-100 max-md:object-cover max-md:w-[90vw]"
+            />
+            <div class="absolute -bottom-4 -left-4 h-24 w-24 max-md:w-16 max-md:h-16 rounded-full bg-pink-400"></div>
+            <div class="absolute -top-4 -right-4 h-12 w-12 max-md:w-12 max-md:h-12 rounded-full bg-pink-400 opacity-95"></div>
           </div>
         </section>
 
@@ -201,10 +177,10 @@ const Spa = () => {
           <h2 className="mt-20 mb-2 justify-center items-center flex text-5xl text-[#821943] font-bold">
             Galería
           </h2>
-          <span className="text-xl text-[#be195c]">
+          <span className="text-xl text-[#be195c] max-md:text-center">
             Una selección de mis mejores creaciones
           </span>
-          <div className="grid grid-cols-3 grid-rows-2 mr-50 mb-10 ml-50 mt-10 gap-4">
+          <div className="grid grid-cols-3 grid-rows-2 lg:mr-50 lg:mb-10 lg:ml-50 lg:mt-10 gap-4">
             {cards.slice(0, count).map((c) => (
               <CardImg
                 key={c.id}
@@ -217,19 +193,27 @@ const Spa = () => {
           </div>
           {!(count === cards.length) && (
             <button
-              className="bg-[#ed4898] p-3 text-center text-white rounded-md hover:brightness-90 cursor-pointer"
+              className="bg-[#e62d77] p-3 text-center text-white rounded-md hover:brightness-90 cursor-pointer"
               onClick={handleCount}
             >
               Ver todos los dibujos
             </button>
           )}
         </section>
-        <section className="bg-[#fae4f9] flex items-center mt-15 pt-20 pb-20 pl-60 gap-6">
-          <div className="w-140">
-            <img className="h-[40vh] w-full" src={img1} alt="" />
+
+        <section
+          id="Sobre-mí"
+          className="bg-[#fae4f9] flex items-center mt-15 pt-26 pb-26 lg:pl-60 gap-6 max-md:flex-col"
+        >
+          <div className="w-140 max-md:w-[90vw]">
+            <img
+              className="h-[40vh] w-full max-md:object-cover"
+              src={img1}
+              alt=""
+            />
           </div>{" "}
           {/* arreglar img para que cubra div */}
-          <div className="w-[75%] self-start mt-10">
+          <div className="w-[75%] self-start mt-10 max-md:self-center max-md:w-[85vw]">
             <h2 className="mb-4 text-4xl text-[#821943] font-bold">Sobre mí</h2>
             <p className="mb-4 text-[#ba3167]">
               Lorem dasdasghsdghs d gsdjg jsndg skdg s gksg k
@@ -242,7 +226,7 @@ const Spa = () => {
           </div>
         </section>
 
-        <section className="mt-24">
+        <section className="pt-24 " id="Comisiones">
           <div className="flex flex-col items-center">
             <h2 className="text-4xl text-[#821943] font-semibold">
               Tienda De Arte
@@ -251,7 +235,7 @@ const Spa = () => {
               Llévate una pieza única y especial
             </h3>
           </div>
-          <div className="flex items-center justify-center gap-6 mt-12">
+          <div className="flex items-center justify-center gap-6 mt-12 max-md:flex-col">
             {shopCards.map((c) => (
               <ShopCard
                 key={c.id}
@@ -263,13 +247,17 @@ const Spa = () => {
             ))}
           </div>
           <div className="flex items-center justify-center mt-16">
-            <a href="" className="p-3 bg-[#e62d77] rounded-md text-white">
+            <a
+              href=""
+              className="p-3 bg-[#e62d77] hover:brightness-95 rounded-md text-white"
+            >
               Visitar Tienda Completa
             </a>
           </div>
         </section>
+
         <section className="mt-24 bg-[#89264d] text-white h-120 flex flex-col justify-center gap-8">
-          <h2 className="text-4xl flex justify-center font-semibold">
+          <h2 className="text-4xl flex justify-center font-semibold max-md:text-center">
             Lo Que Dicen Mis Clientes
           </h2>
           <h3 className="text-gray-300 flex justify-center">
@@ -281,8 +269,8 @@ const Spa = () => {
             ))}
           </div>
         </section>
-        {/* <button onClick={()=> setIsOpen(!isOpen)}className="mt-8">achus</button> */}
-        <section className="mt-16 flex justify-between mx-60">
+
+        <section id="Contacto" className="mt-16 flex justify-between mx-60">
           <div>
             <h2 className="text-[#821943] font-semibold text-3xl">
               ¿Interesado en mi Arte?
@@ -413,11 +401,11 @@ const Spa = () => {
             </li>
           </ul>
         </div>
-          
-
-        <p className="self-center text-[#ba3167]">© 2025 ArtistName. Todos los derechos reservados.</p>
+        <p className="self-center text-[#ba3167]">
+          © 2025 ArtistName. Todos los derechos reservados.
+        </p>
       </footer>
-    </>
+    </div>
   );
 };
 

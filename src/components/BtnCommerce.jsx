@@ -5,7 +5,7 @@ const BtnCommerce = () => {
       <a
         href="#"
         target="_blank"
-        className="flex gap-4 border-1 border-white p-2 rounded-md bg-pink-400 text-white hover:brightness-90"
+        className="flex gap-4 border-1 border-white p-2 rounded-md bg-[#e62d77] text-white hover:brightness-90"
       >
         <ShoppingBag color="#fff" /> Comprar Arte
       </a>

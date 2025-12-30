@@ -2,7 +2,11 @@ const CardImg = ({ img, title, style, size }) => {
   return (
     <div className="relative overflow-hidden fadeIn">
       <div className="">
-        <img className="rounded-md" src={img} alt="" />
+        <img
+          className="rounded-md max-md:object-cover max-md:w-20 max-md:h-20"
+          src={img}
+          alt=""
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-t from-pink-500 opacity-0 transition-opacity duration-300 hover:opacity-100">
         <div className="absolute bottom-0 left-0 right-0 p-4">

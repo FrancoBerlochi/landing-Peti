@@ -7,6 +7,8 @@
   font-family: "Poppins", sans-serif;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 html{
   scroll-behavior: smooth;
 }
@@ -14,12 +16,12 @@ html{
 body{
   padding: 0;
   margin: 0;
-
 }
 
 a{
   text-decoration: none;
 }
+
 
 .fadeIn{
   opacity: 10%;
@@ -32,6 +34,35 @@ a{
   }
 }
 
+.no-scroll{
+  overflow: hidden;
+}
 
 
-  
+.rotate-moon{
+  color: #ffee00;
+  animation: rotate-moon 0.5s ease forwards;
+}
+
+.rotate-sun{
+  color: #f994a5;
+  animation: rotate-sun 0.5s ease forwards;
+}
+
+@keyframes rotate-moon {
+  from{
+    transform: rotate(-25deg)
+  }
+  to{
+    transform: rotate(0);
+  }
+}
+
+@keyframes rotate-sun {
+  from{
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}

@@ -1,9 +1,12 @@
-import Spa from "./components/Spa"
+import Spa from "./components/Spa";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App = () => {
-  return<>
-    <Spa/>
-    </>
-}
+  return (
+    <ThemeProvider>
+      <Spa />
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
