@@ -8,10 +8,14 @@ const ThemeBtn = () => {
   return (
     <>
       <button
-        className="cursor-pointer"
+        className="cursor-pointer max-md:ml-5 max-md:mt-7"
         onClick={handleTheme}
       >
-        {isDark ? <Moon className="text-yellow-400 rotate-moon"></Moon> : <Sun className="text-pink-400 rotate-sun"></Sun>}
+        {isDark ? (
+          <Moon className="rotate-moon max-md:h-8 max-md:w-8"></Moon>
+        ) : (
+          <Sun className="text-[#f994a5] max-md:text-pink-200 rotate-sun max-md:h-8 max-md:w-8 "></Sun>
+        )}
       </button>
     </>
   );

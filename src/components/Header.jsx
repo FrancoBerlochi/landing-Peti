@@ -23,7 +23,7 @@ const Header = () => {
   return (
     <>
       <header
-        className="bg-white sticky top-0 w-full z-40 transition-colors duration-300 p-5 overflow-x-hidden"
+        className="bg-white dark:bg-[#444] sticky top-0 w-full z-40 transition-colors duration-300 p-5 overflow-x-hidden"
         id="header"
       >
         <div className="flex justify-between text-[#e1488c]">
@@ -55,36 +55,39 @@ const Header = () => {
             menu
               ? `max-md:h-screen max-md:flex max-md:flex-col`
               : `h-0 w-0 translate-x-[100vw]`
-          } z-30 fixed bg-[#e1488c] transition-all duration-300 w-screen top-0 bottom-0 left-0`}
+          } z-30 fixed bg-[#e1488c] dark:bg-[#333] transition-all duration-300 w-screen top-0 bottom-0 left-0`}
           onClick={(e) => e.stopPropagation()}
         >
-          <button
-            className={`${
-              menu ? `w-fit h-fit self-end mr-5 mt-7` : `hidden`
-            } text-[#fee]`}
-            onClick={handleMenu}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-menu-icon lucide-menu"
+          <div className="w-full flex justify-between items-center">
+            <ThemeBtn></ThemeBtn>
+            <button
+              className={`${
+                menu ? `w-fit h-fit  mr-5 mt-7` : `hidden`
+              } text-[#fee] dark:text-[#e1488c]`}
+              onClick={handleMenu}
             >
-              <path d="M4 5h16" />
-              <path d="M4 12h16" />
-              <path d="M4 19h16" />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-menu-icon lucide-menu"
+              >
+                <path d="M4 5h16" />
+                <path d="M4 12h16" />
+                <path d="M4 19h16" />
+              </svg>
+            </button>
+          </div>
           <div
             className={`flex flex-col items-center gap-24 mt-[13vh] mb-[55vh] transition-all duration-300 ${
               menu ? `text-5xl` : `text-[0px]`
-            } text-[#fee]`}
+            } text-[#fee] dark:text-[#e1488c]`}
           >
             {navNames.map((n) => {
               return (
@@ -105,10 +108,13 @@ const Header = () => {
               </a>
             </h2>
           </div>
-          <div className="flex gap-6 text-pink-800 items-center">
+          <div className="flex gap-6 text-pink-800 dark:text-pink-400 items-center">
             {navNames.map((n) => {
               return (
-                <a href={n.href} className="hover:text-red-400">
+                <a
+                  href={n.href}
+                  className="hover:text-red-400 dark:hover:text-pink-300"
+                >
                   {n.name}
                 </a>
               );
