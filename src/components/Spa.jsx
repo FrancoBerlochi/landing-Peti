@@ -1,7 +1,6 @@
 import { Brush, Mail, Instagram, Import } from "lucide-react";
 import CardImg from "./CardImg";
 //import CardDetails from "./CardDetails";
-import { POST } from "../api/Api";
 import img1 from "../assets/pexels-pixabay-147411.jpg";
 import insta from "../assets/instagram.png";
 import x from "../assets/x.png";
